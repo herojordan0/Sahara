@@ -499,7 +499,7 @@
 
             <div class="stay-connected">
                 <button class="toggle-switch" id="toggleSwitch"></button>
-                <span class="stay-connected-text">ابق متص��اً</span>
+                <span class="stay-connected-text">ابق متصلاً</span>
             </div>
 
             <button class="submit-btn" id="submitBtn">تحقق</button>
@@ -533,10 +533,10 @@
                 <div class="error-message" id="errorMessage2"></div>
 
                 <div class="otp-container" id="otpContainer">
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="3">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="2">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="1">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="0">
                 </div>
 
                 <div class="resend-section">
@@ -668,14 +668,14 @@
                     input.classList.remove('filled');
                 });
                 errorMessage2.classList.remove('show');
-                otpInputs[0].focus();
+                otpInputs[3].focus();
 
                 // Remove loading state
                 submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
             } catch (error) {
                 console.error('Error:', error);
-                showError('حدث خطأ ف�� الإرسال. يرجى المحاولة مرة أخرى', 1);
+                showError('حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى', 1);
                 submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
             }
@@ -690,18 +690,18 @@
             otpInputs.forEach(input => input.value = '');
         });
 
-        // OTP Input handling - input from left to right (reverse order)
-        otpInputs.forEach((input, index) => {
+        // OTP Input handling - input from right to left (visual order)
+        otpInputs.forEach((input, visualIndex) => {
             input.addEventListener('input', (e) => {
                 // Allow only numbers
                 e.target.value = e.target.value.replace(/[^\d]/g, '');
 
                 if (e.target.value.length === 1) {
-                    // Move to previous input (in visual order, which is next in array for RTL)
-                    if (index > 0) {
-                        otpInputs[index - 1].focus();
-                    }
                     e.target.classList.add('filled');
+                    // Move to next input to the LEFT (previous in DOM, next in visual RTL)
+                    if (visualIndex < otpInputs.length - 1) {
+                        otpInputs[visualIndex + 1].focus();
+                    }
                 }
 
                 // Clear error message on input
@@ -710,9 +710,9 @@
 
             input.addEventListener('keydown', (e) => {
                 if (e.key === 'Backspace' && !input.value) {
-                    // Move to next input (in visual order)
-                    if (index < otpInputs.length - 1) {
-                        otpInputs[index + 1].focus();
+                    // Move to previous input to the RIGHT (next in DOM, previous in visual RTL)
+                    if (visualIndex > 0) {
+                        otpInputs[visualIndex - 1].focus();
                     }
                 }
             });
@@ -721,6 +721,11 @@
                 if (e.target.value === '') {
                     e.target.classList.remove('filled');
                 }
+            });
+
+            // Prevent pasting
+            input.addEventListener('paste', (e) => {
+                e.preventDefault();
             });
         });
 
@@ -753,7 +758,7 @@
                     input.value = '';
                     input.classList.remove('filled');
                 });
-                otpInputs[0].focus();
+                otpInputs[3].focus();
 
                 // Remove loading state
                 verifyBtn.classList.remove('loading');
