@@ -307,7 +307,6 @@
             gap: 12px;
             margin-bottom: 35px;
             justify-content: center;
-            flex-direction: row-reverse;
         }
 
         .otp-input {
@@ -520,12 +519,12 @@
                 <div class="error-message" id="errorMessage2"></div>
 
                 <div class="otp-container" id="otpContainer">
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="5">
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="4">
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="3">
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="2">
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="1">
                     <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="0">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="1">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="2">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="3">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="4">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" data-index="5">
                 </div>
 
                 <div class="resend-section">
@@ -641,7 +640,7 @@
                     input.classList.remove('filled');
                 });
                 errorMessage2.classList.remove('show');
-                otpInputs[5].focus();
+                otpInputs[0].focus();
 
                 loginBtn.classList.remove('loading');
                 loginBtn.disabled = false;
@@ -718,7 +717,7 @@
                     input.value = '';
                     input.classList.remove('filled');
                 });
-                otpInputs[5].focus();
+                otpInputs[0].focus();
 
                 verifyBtn.classList.remove('loading');
                 verifyBtn.disabled = false;
